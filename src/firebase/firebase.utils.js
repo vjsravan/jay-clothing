@@ -1,0 +1,25 @@
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+
+const config = {
+    apiKey: "AIzaSyARUF8VJ0-BVG4U2ydOEg31WconWdWmJM0",
+    authDomain: "jay-clothing.firebaseapp.com",
+    databaseURL: "https://jay-clothing.firebaseio.com",
+    projectId: "jay-clothing",
+    storageBucket: "jay-clothing.appspot.com",
+    messagingSenderId: "273009210979",
+    appId: "1:273009210979:web:45e71fdf25c70c601aea56",
+    measurementId: "G-K08TW2GHZ7"
+  };
+
+  firebase.initializeApp(config);
+
+  export const auth = firebase.auth();
+  export const firestore = firebase.firestore();
+
+  const provider = new firebase.auth.GoogleAuthProvider();
+  provider.setCustomParameters({prompt: 'select_account'});
+  export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+  export default firebase;
